@@ -1,0 +1,37 @@
+.box-card {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 25px;
+  padding: 2rem;
+  margin: 1px 1px 1px 1px;
+}
+
+.flex-box-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0 1rem 0;
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius: 25px;
+  background-color: #d2efff;
+  z-index: -1;
+}
+
+@media (max-width: 600px) {
+  .flex-box-actions {
+    flex-direction: column;
+  }
+}
+/* 
+@media (max-width: 800px) {
+  .btn {
+    width: 30vw;
+    margin: 20px 0.5rem 0.5rem 0.5rem;
+  }
+} */
+
+/* @media (max-width: 600px) {
+  .btn {
+    width: auto;
+    margin: 1.5rem 0.5rem 0.5rem 0.5rem;
+  }
+} */

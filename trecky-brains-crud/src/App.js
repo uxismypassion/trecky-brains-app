@@ -5,6 +5,7 @@ import Login from './pages/login/login';
 import Usuarios from './pages/users/users';
 import { AuthProvider } from './context/authContext';
 import Register from './pages/register/register';
+import ProtectedRoutes from './pages/protectedRoutes';
 
 const theme = createTheme({
   palette: {
@@ -53,6 +54,20 @@ const theme = createTheme({
         fontSize: '3.2rem',
       },
     },
+    h2: {
+      fontWeight: 600,
+      fontSize: '1.6rem',
+      '@media (min-width:600px)': {
+        fontSize: '2rem',
+      },
+    },
+    h3: {
+      fontWeight: 500,
+      fontSize: '1.5rem',
+      '@media (min-width:600px)': {
+        fontSize: '1.8rem',
+      },
+    },
   },
 });
 
@@ -63,7 +78,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={ <Login /> }></Route>
-            <Route path="/Usuarios" element={ <Usuarios /> }></Route>
+            <Route path="/Usuarios" element={ <ProtectedRoutes> <Usuarios /> </ProtectedRoutes>}></Route>
             <Route path="/Registrarse" element={ <Register /> }></Route>
           </Routes>
         </BrowserRouter>
