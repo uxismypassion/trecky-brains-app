@@ -1,0 +1,27 @@
+.plain-text {
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.box-login-container {
+  margin: 2.5rem 0.5rem 0rem 0.5rem
+}
+
+@media screen and (min-width: 800px) {
+  .box-login-container {
+    position: fixed;
+    max-width: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0rem 0.5rem 0rem 0.5rem
+  }
+}
+
+.box-login {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 25px;
+  padding: 2rem;
+  margin: 0;
+}

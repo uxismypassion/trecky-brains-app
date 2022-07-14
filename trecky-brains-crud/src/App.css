@@ -1,3 +1,7 @@
+html {
+  background-color: hsl(53, 100%, 91%); 
+}
+
 .App {
   text-align: center;
 }
