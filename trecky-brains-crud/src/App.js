@@ -34,10 +34,10 @@ const theme = createTheme({
       '"Segoe UI Symbol"',
     ].join(','),
     subtitle1: {
-      fontSize: 12,
+      fontSize: 14,
     },
     body1: {
-      fontSize: 14,
+      fontSize: 18,
       fontWeight: 400,
       '@media (min-width:600px)': {
         fontSize: 16,
@@ -59,16 +59,16 @@ const theme = createTheme({
     },
     h2: {
       fontWeight: 600,
-      fontSize: '1.6rem',
+      fontSize: '1.8rem',
       '@media (min-width:600px)': {
-        fontSize: '2rem',
+        fontSize: '2.2rem',
       },
     },
     h3: {
       fontWeight: 500,
-      fontSize: '1.4rem',
+      fontSize: '1.6rem',
       '@media (min-width:600px)': {
-        fontSize: '1.6rem',
+        fontSize: '1.8rem',
       },
     },
   },
