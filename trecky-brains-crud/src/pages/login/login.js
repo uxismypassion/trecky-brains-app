@@ -1,8 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Box, Typography, TextField, Button } from '@mui/material';
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/authContext';
-import './style.css'
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import './style.css';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const Login = () => {
 
@@ -10,6 +16,16 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
   const { login, resetPassword } = useAuth();
 
@@ -19,14 +35,27 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    console.log(user);
-    try {
-      await login(user.email, user.password);
-      navigate("/Usuarios");
-    } catch (error) {
-      setError(error.message);
+    if (user.email === "") {
+      setMessage("Debes ingresar tu correo !");
+      setOpen(true);
+    } else if (user.password === "") {
+      setMessage("Debes ingresar tu contraseña !");
+      setOpen(true);
+    } else {
+      try {
+        await login(user.email, user.password);
+        navigate("/Usuarios");
+      } catch (error) {
+        setError(error.message);
+        setMessage("Los datos que ingresaste no son correctos :(");
+      }
     }
+    //console.log(user);
   };
+
+  const handleRegister = () => {
+    navigate("/Registrarse");
+  }
 
   return (
     <Container component='div' maxWidth='false'>
@@ -52,13 +81,12 @@ const Login = () => {
             fullWidth
             name="password"
             label="Contraseña"
-            type="password"
             id="password"
             autoComplete="current-password"
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
           <Typography component="div" variant="body2" sx={{mt: 1, color: 'red'}}>
-            (*) Los campos con este simbolo son obligatorios !!!
+            (*) Los campos con este simbolo son obligatorios
           </Typography>
           <Button
             type="submit"
@@ -76,11 +104,17 @@ const Login = () => {
             color='secondary'
             sx={{ mt: 2, mb: 1}}
             className='button-crear-cuenta'
+            onClick={handleRegister}
           >
             Crear Cuenta :o
           </Button>
         </Box>
       </div>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} sx={{mb: 1}}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+          {message}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

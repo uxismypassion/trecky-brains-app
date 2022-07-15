@@ -25,7 +25,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    console.log(user);
+    //console.log(user);
     try {
       await signup(user.email, user.password);
       console.log("Registrado con exito");
