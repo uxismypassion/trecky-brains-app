@@ -1,4 +1,4 @@
-# trecky-brains-app
+# tecky-brains-app
 
 # Link de la app
 
